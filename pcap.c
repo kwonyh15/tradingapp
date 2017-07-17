@@ -135,6 +135,8 @@ int main(int argc, char *argv[])
 	struct tcp_header *tcp;
 
 	u_char *payload;
+	
+	int i;
 
 
 
@@ -202,7 +204,7 @@ int main(int argc, char *argv[])
 
 
 
-		printf("< Packet Start >\n");
+		printf("          < Packet Start >\n");
 
 
 
@@ -263,14 +265,20 @@ int main(int argc, char *argv[])
 				return(2);
 
 			}
-
+			
 			payload = (u_char *)(packet + 14 +sizeof(struct ip_header) + sizeof(struct tcp_header));
+			
+			printf("\n\nData Value : ");
 
+			for( i = 0 ; i < 16 ; i++ ){
 
+				printf("%c", *payload);
 
-			printf("Data Value : %02x\n", payload);
+				payload = payload + 1;
 
-			printf("\n");
+			}
+			printf("\n==========================================");
+			printf("\n\n\n");
 
 
 
